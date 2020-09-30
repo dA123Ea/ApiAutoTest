@@ -1,0 +1,4 @@
+#验证有昵称注册成功
+- data: {"mobilephone": "18709183930", "pwd": "123456", "regname": "test"}
+  expect: {"status":"0","code":"20110","data": {},"msg":"手机号码已被注册"}
+

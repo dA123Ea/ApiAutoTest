@@ -1,0 +1,16 @@
+#注册
+#验证有昵称注册成功
+- data: {"mobilephone": "13227011051", "pwd": "1234567", "regname": "test"}
+  expect: {"status":"1","code":"10001","msg":"注册成功"}
+#验证无昵称注册成功
+- data: {"mobilephone": "13227011051", "pwd": "1234568"}
+  expect: {"status":"1","code":"10001","msg":"注册成功"}
+ #验证注册用户时输入合理的手机号、用户名、6位密码，注册成功
+- data: {"mobilephone": "13227011051", "pwd": "123456","regname": "test"}
+  expect: {"status":"1","code":"10001","msg":"注册成功"}
+#验证注册用户时输入合理的手机号、用户名、8位密码，注册成功
+- data: {"mobilephone": "13227011051", "pwd": "12345678","regname": "test"}
+  expect: {"status":"1","code":"10001","msg":"注册成功"}
+#验证注册用户时输入合理的手机号、用户名、18位密码，注册成功
+- data: {"mobilephone": "13227011051", "pwd": "123456789987654321","regname": "test"}
+  expect: {"status":"1","code":"10001","msg":"注册成功"}

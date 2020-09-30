@@ -1,0 +1,35 @@
+
+#验证非手机段格式时登录失败
+- data: {"mobilephone": "11122233341", "pwd": "123456","regname": "test"}
+  expect: {"status":"0","code":"20111",data": {},"msg":"用户名或密码错误"}
+#验证用户登录时不输入手机号，登陆失败
+- data: {"mobilephone": "", "pwd": "123456"}
+  expect: {"status":"0","code":"20103","data": {},"msg":"手机号不能为空"}
+  #验证用户登录时不输入手机号，登陆失败
+- data: {"mobilephone": "", "pwd": "123456"}
+  expect: {"status":"0","code":"20103","data": {},"msg":"手机号不能为空"}
+#验证用户登录时不输入手机号和密码，登陆失败
+- data: {"mobilephone": "", "pwd": ""}
+  expect: {"status":"0","code":"20103","data": {},"msg":"手机号不能为空"}
+#验证用户登录时输入错误的手机号，登陆失败
+- data: {"mobilephone": "13568246798", "pwd": "123456"}
+  expect: {"status":"1","code":"10001","data": {},"msg":"登录成功"}
+#验证用户登录时输入错误的密码，登陆失败
+- data:  {"mobilephone": "13227011051", "pwd": "1234564"}
+  expect: {"status":"0","code":"20111","data": {},"msg":"用户名或密码错误"}
+
+  #验证用户登录时输入正确的11位手机号和6位密码，登陆成功
+- data: {"mobilephone": "13227011051", "pwd": "123456"}
+  expect: {"status":"1","code":"10001","data": {},"msg":"登录成功"}
+#验证用户登录时输入正确的11位手机号和8位密码，登陆成功
+- data: {"mobilephone": "13227011051", "pwd": "12345678"}
+  expect: {"status":"1","code":"10001","msg":"登录成功"}
+#验证用户登录时输入正确的11位手机号和18位密码，登陆成功
+- data: {"mobilephone": "13227011051", "pwd": "123456789987654321"}
+  expect: {"status":"1","code":"10001","data": {},"msg":"登录成功"}
+  #验证用户登录时输入正确的11位手机号和8位密码，登陆成功
+- data: {"mobilephone": "13227011051", "pwd": "12345678"}
+  expect: {"status":"1","code":"10001","msg":"登录成功"}
+#验证用户登录时输入正确的11位手机号和18位密码，登陆成功
+- data: {"mobilephone": "13227011051", "pwd": "123456789987654321"}
+  expect: {"status":"1","code":"10001","data": {},"msg":"登录成功"}

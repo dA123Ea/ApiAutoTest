@@ -1,0 +1,25 @@
+ #注册失败
+ #验证mobilephone为空时,注册失败
+- data: {"mobilephone": "", "pwd": "123456","regname": "test"}
+  expect: {'code': '20103', 'msg': '手机号不能为空', 'status': '0'}
+#验证password为空时注册失败
+- data: {"mobilephone": "13227011051", "pwd": "","regname": "test"}
+  expect: {"status":"0","code":"20103","msg":"密码不能为空"}
+#验证参数为空时注册失败
+- data: {"mobilephone": "", "pwd": "","regname": "test"}
+  expect: {"status":"0","code":"20103","msg":"手机号不能为空"}
+#验证pwd长度为5时注册失败
+- data: {"mobilephone": "13227011051", "pwd": "12345","regname": "test"}
+  expect: {"status":"0","code":"20108","msg":"密码长度必须为6~18"}
+ #验证pwd长度为19时注册失败
+- data: {"mobilephone": "13227011051", "pwd": "1234567891234567890","regname": "test"}
+  expect: {"status":"0","code":"20108","msg":"密码长度必须为6~18"}
+#验证mobilephone小于11位时注册失败
+- data: {"mobilephone": "1322701105", "pwd": "123456","regname": "test"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+#验证mobilephone大于11位时注册失败
+- data:  {"mobilephone": "132270110512", "pwd": "123456","regname": "test"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
+#验证mobilephone含特殊字符时注册失败
+- data: {"mobilephone": "_&*227011", "pwd": "123456","regname": "test"}
+  expect: {"status":"0","code":"20109","data": {},"msg":"手机号码格式不正确"}
